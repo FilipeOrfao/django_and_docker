@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  django:
+    build:
+      context: ./portfolio # Build the image from the current directory
+    container_name: django_portfolio_project_container
+    ports:
+      - "8001:8000" # Expose port 8000 from the container to 8001 on the host
+    volumes:
+      - ./portfolio:/usr/src/app
