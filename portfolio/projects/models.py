@@ -7,3 +7,8 @@ class Project(models.Model):
     description = models.TextField()
     technology = models.CharField(max_length=20)
     image = models.FilePathField(path="/projects/img")
+
+
+# this is how you use orm
+# from projects.models import Project
+# Project(title="",description="",technology="",image="")
