@@ -33,7 +33,12 @@
               <a
                 href="{% url 'projects:project_detail' project.pk %}"
                 class="btn btn-primary"
-                >Read more</a
+                >Read more ID</a
+              >
+              <a
+                href="{% url 'projects:project_detail_title' project.title %}"
+                class="btn btn-primary"
+                >Read more Title</a
               >
             </div>
           </div>
