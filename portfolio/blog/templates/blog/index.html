@@ -1,0 +1,5 @@
+{% extends "projects/base.html" %} {% block content %} {% for post in posts %}
+<a href="{% url 'blog:blog_detail' post.pk %}"
+  ><p>{{ post.title }} {{ post.created_on }}</p></a
+>
+{% endfor %} {% endblock content %}
