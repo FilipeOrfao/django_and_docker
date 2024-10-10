@@ -1,5 +1,17 @@
-{% extends "projects/base.html" %} {% block content %} {% for post in posts %}
-<a href="{% url 'blog:blog_detail' post.pk %}"
-  ><p>{{ post.title }} {{ post.created_on }}</p></a
->
+{% extends "projects/base.html" %} {% block content %}
+
+<h1>My personal blog</h1>
+
+{% for post in posts %}
+
+<div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+  <a class="d-inline-block" href="{% url 'blog:blog_detail' post.pk %}">
+    <h3>{{ post.title }}</h3>
+  </a>
+
+  <p>{{ post.created_on }}</p>
+
+  <p>{{ post.body|slice:':400' }} ...</p>
+</div>
+
 {% endfor %} {% endblock content %}

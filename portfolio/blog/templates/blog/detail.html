@@ -16,6 +16,21 @@
 
 <p>{{ post.body | slice:'400' }}</p>
 
+<h3>Leave a comment:</h3>
+<form method="post">
+  {% csrf_token %}
+  <div class="w-50 mb-2">{{form.author}}</div>
+  <div class="w-50 mb-2">{{form.body}}</div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h3>Comments:</h3>
 {% for comment in comments %}
-<p>{{ comment.author }}</p>
+<div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+  <p>
+    On {{ comment.created_on.date }}
+    <strong>{{ comment.author }}</strong> wrote:
+  </p>
+  <p>{{ comment.body | linebreaks }}</p>
+</div>
 {% endfor %} {% endblock content %}
