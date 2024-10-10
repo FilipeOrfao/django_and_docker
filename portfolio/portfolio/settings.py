@@ -61,6 +61,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             os.path.join(BASE_DIR, "projects/templates"),
+            os.path.join(BASE_DIR, "users/templates"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -129,3 +130,5 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = "users:dashboard"
