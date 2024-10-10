@@ -45,7 +45,14 @@
               <a class="nav-link" href="{% url 'blog:all_blogs' %}">Blog</a>
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link d-flex">Log in</a>
+              {% if user.is_authenticated %}
+              <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="nav-link d-flex">Logout</button>
+              </form>
+              {%else%}
+              <a href="{% url 'login' %}" class="nav-link d-flex">Login</a>
+              {% endif %}
             </li>
           </ul>
         </div>
