@@ -44,6 +44,15 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'blog:all_blogs' %}">Blog</a>
             </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{% url 'users:dashboard' %}" class="nav-link d-flex"
+                >{{ user.username }}</a
+              >
+            </li>
+            {% endif %}
+
             <li class="nav-item">
               {% if user.is_authenticated %}
               <form method="post" action="{% url 'logout' %}">

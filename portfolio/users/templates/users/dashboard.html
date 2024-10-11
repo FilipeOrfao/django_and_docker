@@ -1,3 +1,10 @@
 {% extends "projects/base.html" %} {% block content %}
 <div class="">Hello, {{ user.username|default:'Guess' }}!</div>
+
+<div class="">
+  {% if user.is_authenticated %}
+  <a href="{% url 'password_change' %}">Change password</a>
+  {% endif %}
+</div>
+
 {% endblock content %}
