@@ -4,6 +4,11 @@
   {% csrf_token %} {{form.as_p}}
   <input class="btn btn-primary" type="submit" value="Login" />
 </form>
+<p>
+  <a href="{% url 'password_reset' %}">Reset password</a>
+</p>
 
-<a href="{% url 'users:dashboard' %}">Back to dashboard</a>
+<p>
+  <a href="{% url 'users:dashboard' %}">Back to dashboard</a>
+</p>
 {% endblock content %}

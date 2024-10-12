@@ -134,3 +134,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "users:dashboard"
 
 LOGOUT_REDIRECT_URL = "users:dashboard"
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
