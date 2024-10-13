@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv, dotenv_values
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     "projects",
     "blog",
     "users",
+    "social_django",
 ]
 
 MIDDLEWARE = [
@@ -70,6 +73,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
             ],
         },
     },
@@ -136,3 +141,20 @@ LOGIN_REDIRECT_URL = "users:dashboard"
 LOGOUT_REDIRECT_URL = "users:dashboard"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
+AUTHENTICATION_BACKENDS = (
+    "social_core.backends.github.GithubOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
+    # "social_core.backends.open_id.OpenIdAuth",
+    # "social_core.backends.google.GoogleOpenId",
+    # "social_core.backends.google.GoogleOAuth2",
+    # "social_core.backends.google.GoogleOAuth",
+    # "social_core.backends.twitter.TwitterOAuth",
+    # "social_core.backends.yahoo.YahooOpenId",
+)
+
+SOCIAL_AUTH_GITHUB_KEY = os.getenv("SOCIAL_AUTH_GITHUB_KEY")
+SOCIAL_AUTH_GITHUB_SECRET = os.getenv("SOCIAL_AUTH_GITHUB_SECRET")
+SOCIAL_AUTH_URL_NAMESPACE = "social"
+LOGIN_URL = "social:begin"
