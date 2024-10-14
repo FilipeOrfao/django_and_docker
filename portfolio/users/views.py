@@ -25,4 +25,4 @@ def register(request):
             user.backend = "django.contrib.auth.backends.ModelBackend"
             user.save()
             login(request, user)
-            return redirect(reverse("users/dashboard.html"))
+            return redirect(reverse("users:dashboard"))
